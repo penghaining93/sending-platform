@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.OpinionMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.Opinion" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="prison_opinion" property="prisonOpinion" jdbcType="VARCHAR" />
+    <result column="prisonadmin_opinion" property="prisonadminOpinion" jdbcType="VARCHAR" />
+    <result column="procuratorate_opinion" property="procuratorateOpinion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, prison_opinion, prisonadmin_opinion, procuratorate_opinion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OpinionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_caseinfo_opinion
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OpinionKey" >
+    delete from plc_caseinfo_opinion
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Opinion" >
+    insert into plc_caseinfo_opinion (batch_id, crim_id, prison_opinion, 
+      prisonadmin_opinion, procuratorate_opinion
+      )
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{prisonOpinion,jdbcType=VARCHAR}, 
+      #{prisonadminOpinion,jdbcType=VARCHAR}, #{procuratorateOpinion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Opinion" >
+    insert into plc_caseinfo_opinion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="prisonOpinion != null" >
+        prison_opinion,
+      </if>
+      <if test="prisonadminOpinion != null" >
+        prisonadmin_opinion,
+      </if>
+      <if test="procuratorateOpinion != null" >
+        procuratorate_opinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonOpinion != null" >
+        #{prisonOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonadminOpinion != null" >
+        #{prisonadminOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="procuratorateOpinion != null" >
+        #{procuratorateOpinion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Opinion" >
+    update plc_caseinfo_opinion
+    <set >
+      <if test="prisonOpinion != null" >
+        prison_opinion = #{prisonOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonadminOpinion != null" >
+        prisonadmin_opinion = #{prisonadminOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="procuratorateOpinion != null" >
+        procuratorate_opinion = #{procuratorateOpinion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Opinion" >
+    update plc_caseinfo_opinion
+    set prison_opinion = #{prisonOpinion,jdbcType=VARCHAR},
+      prisonadmin_opinion = #{prisonadminOpinion,jdbcType=VARCHAR},
+      procuratorate_opinion = #{procuratorateOpinion,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

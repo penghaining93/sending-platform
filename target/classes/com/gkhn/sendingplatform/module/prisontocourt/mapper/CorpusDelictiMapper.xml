@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.CorpusDelictiMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.CorpusDelicti" >
+    <result column="commutation_degree" property="commutationDegree" jdbcType="VARCHAR" />
+    <result column="joint_crime" property="jointCrime" jdbcType="VARCHAR" />
+    <result column="gang_crime" property="gangCrime" jdbcType="VARCHAR" />
+    <result column="gang_status" property="gangStatus" jdbcType="VARCHAR" />
+    <result column="gang_number" property="gangNumber" jdbcType="VARCHAR" />
+    <result column="crime_status" property="crimeStatus" jdbcType="VARCHAR" />
+    <result column="crime_truth" property="crimeTruth" jdbcType="VARCHAR" />
+    <result column="flee_type" property="fleeType" jdbcType="VARCHAR" />
+    <result column="case_involve" property="caseInvolve" jdbcType="VARCHAR" />
+    <result column="four_history" property="fourHistory" jdbcType="VARCHAR" />
+    <result column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <result column="crim_id" property="crimId" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CorpusDelicti" >
+    insert into plc_caseinfo_corpus_delicti (commutation_degree, joint_crime, gang_crime, 
+      gang_status, gang_number, crime_status, 
+      crime_truth, flee_type, case_involve, 
+      four_history, batch_id, crim_id
+      )
+    values (#{commutationDegree,jdbcType=VARCHAR}, #{jointCrime,jdbcType=VARCHAR}, #{gangCrime,jdbcType=VARCHAR}, 
+      #{gangStatus,jdbcType=VARCHAR}, #{gangNumber,jdbcType=VARCHAR}, #{crimeStatus,jdbcType=VARCHAR}, 
+      #{crimeTruth,jdbcType=VARCHAR}, #{fleeType,jdbcType=VARCHAR}, #{caseInvolve,jdbcType=VARCHAR}, 
+      #{fourHistory,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CorpusDelicti" >
+    insert into plc_caseinfo_corpus_delicti
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commutationDegree != null" >
+        commutation_degree,
+      </if>
+      <if test="jointCrime != null" >
+        joint_crime,
+      </if>
+      <if test="gangCrime != null" >
+        gang_crime,
+      </if>
+      <if test="gangStatus != null" >
+        gang_status,
+      </if>
+      <if test="gangNumber != null" >
+        gang_number,
+      </if>
+      <if test="crimeStatus != null" >
+        crime_status,
+      </if>
+      <if test="crimeTruth != null" >
+        crime_truth,
+      </if>
+      <if test="fleeType != null" >
+        flee_type,
+      </if>
+      <if test="caseInvolve != null" >
+        case_involve,
+      </if>
+      <if test="fourHistory != null" >
+        four_history,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commutationDegree != null" >
+        #{commutationDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="jointCrime != null" >
+        #{jointCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="gangCrime != null" >
+        #{gangCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="gangStatus != null" >
+        #{gangStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gangNumber != null" >
+        #{gangNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeStatus != null" >
+        #{crimeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeTruth != null" >
+        #{crimeTruth,jdbcType=VARCHAR},
+      </if>
+      <if test="fleeType != null" >
+        #{fleeType,jdbcType=VARCHAR},
+      </if>
+      <if test="caseInvolve != null" >
+        #{caseInvolve,jdbcType=VARCHAR},
+      </if>
+      <if test="fourHistory != null" >
+        #{fourHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

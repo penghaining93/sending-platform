@@ -1,0 +1,53 @@
+server:
+  port: 8080
+
+########################################################
+###THYMELEAF (ThymeleafAutoConfiguration)
+########################################################
+#spring.thymeleaf.prefix=classpath:/templates/
+#spring.thymeleaf.suffix=.html
+#spring.thymeleaf.mode=HTML5
+#spring.thymeleaf.encoding=UTF-8
+# ;charset=<encoding> is added
+#spring.thymeleaf.content-type=text/html
+# set to false for hot refresh
+
+
+spring:
+    thymeleaf:
+        cache: false #开发的时候关闭缓存
+        mode: HTML5
+        encoding: utf-8
+        content-type: text/html
+    kafka:
+        producer:
+          bootstrap-servers: localhost:9092
+          zk-nodes: localhost:2181
+        consumer:
+          group-id: springboot-group1
+          auto-offset-reset: earliest
+    profiles:
+        active: datasource
+    #热部署生效
+    #设置重启的目录
+    devtools:
+        enabled: true
+    #spring.devtools.restart.additional-paths: src/main/java
+    #classpath目录下的WEB-INF文件夹内容修改不重启
+    restart:
+        exclude: classpath:templates/*.html
+    session:
+      store-type: none
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.gkhn.sendingplatform.*.model
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+

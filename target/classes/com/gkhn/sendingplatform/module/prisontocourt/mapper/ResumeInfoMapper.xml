@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.ResumeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfo" >
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <result column="professional" property="professional" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="startime" property="startime" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    crim_id, batch_id, professional, duty, company, startime, endtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_resume_info
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfoKey" >
+    delete from plc_resume_info
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfo" >
+    insert into plc_resume_info (crim_id, batch_id, professional, 
+      duty, company, startime, 
+      endtime)
+    values (#{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{professional,jdbcType=VARCHAR}, 
+      #{duty,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{startime,jdbcType=VARCHAR}, 
+      #{endtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfo" >
+    insert into plc_resume_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="professional != null" >
+        professional,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="startime != null" >
+        startime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfo" >
+    update plc_resume_info
+    <set >
+      <if test="professional != null" >
+        professional = #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        startime = #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ResumeInfo" >
+    update plc_resume_info
+    set professional = #{professional,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      startime = #{startime,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=VARCHAR}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+</mapper>

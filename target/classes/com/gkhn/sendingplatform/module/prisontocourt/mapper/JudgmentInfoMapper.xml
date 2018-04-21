@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.JudgmentInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfo" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="handle_court" property="handleCourt" jdbcType="VARCHAR" />
+    <result column="main_charge" property="mainCharge" jdbcType="VARCHAR" />
+    <result column="main_charge_remark" property="mainChargeRemark" jdbcType="VARCHAR" />
+    <result column="judge_date" property="judgeDate" jdbcType="VARCHAR" />
+    <result column="case_num" property="caseNum" jdbcType="VARCHAR" />
+    <result column="main_torture" property="mainTorture" jdbcType="VARCHAR" />
+    <result column="freedompenalty_year" property="freedompenaltyYear" jdbcType="VARCHAR" />
+    <result column="freedompenalty_month" property="freedompenaltyMonth" jdbcType="VARCHAR" />
+    <result column="freedompenalty_day" property="freedompenaltyDay" jdbcType="VARCHAR" />
+    <result column="losepower_lifelong" property="losepowerLifelong" jdbcType="VARCHAR" />
+    <result column="losepower_year" property="losepowerYear" jdbcType="VARCHAR" />
+    <result column="losepower_month" property="losepowerMonth" jdbcType="VARCHAR" />
+    <result column="losepower_day" property="losepowerDay" jdbcType="VARCHAR" />
+    <result column="confiscate_allamount" property="confiscateAllamount" jdbcType="VARCHAR" />
+    <result column="confiscate_amount" property="confiscateAmount" jdbcType="VARCHAR" />
+    <result column="fine" property="fine" jdbcType="VARCHAR" />
+    <result column="civil_compensation" property="civilCompensation" jdbcType="VARCHAR" />
+    <result column="inpersion_date" property="inpersionDate" jdbcType="VARCHAR" />
+    <result column="effect_date" property="effectDate" jdbcType="VARCHAR" />
+    <result column="prison_sdate" property="prisonSdate" jdbcType="VARCHAR" />
+    <result column="prison_edate" property="prisonEdate" jdbcType="VARCHAR" />
+    <result column="execute_time" property="executeTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, handle_court, main_charge, main_charge_remark, judge_date, case_num, 
+    main_torture, freedompenalty_year, freedompenalty_month, freedompenalty_day, losepower_lifelong, 
+    losepower_year, losepower_month, losepower_day, confiscate_allamount, confiscate_amount, 
+    fine, civil_compensation, inpersion_date, effect_date, prison_sdate, prison_edate, 
+    execute_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_judgment_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfoKey" >
+    delete from plc_judgment_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfo" >
+    insert into plc_judgment_info (batch_id, crim_id, handle_court, 
+      main_charge, main_charge_remark, judge_date, 
+      case_num, main_torture, freedompenalty_year, 
+      freedompenalty_month, freedompenalty_day, 
+      losepower_lifelong, losepower_year, losepower_month, 
+      losepower_day, confiscate_allamount, confiscate_amount, 
+      fine, civil_compensation, inpersion_date, 
+      effect_date, prison_sdate, prison_edate, 
+      execute_time)
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{handleCourt,jdbcType=VARCHAR}, 
+      #{mainCharge,jdbcType=VARCHAR}, #{mainChargeRemark,jdbcType=VARCHAR}, #{judgeDate,jdbcType=VARCHAR}, 
+      #{caseNum,jdbcType=VARCHAR}, #{mainTorture,jdbcType=VARCHAR}, #{freedompenaltyYear,jdbcType=VARCHAR}, 
+      #{freedompenaltyMonth,jdbcType=VARCHAR}, #{freedompenaltyDay,jdbcType=VARCHAR}, 
+      #{losepowerLifelong,jdbcType=VARCHAR}, #{losepowerYear,jdbcType=VARCHAR}, #{losepowerMonth,jdbcType=VARCHAR}, 
+      #{losepowerDay,jdbcType=VARCHAR}, #{confiscateAllamount,jdbcType=VARCHAR}, #{confiscateAmount,jdbcType=VARCHAR}, 
+      #{fine,jdbcType=VARCHAR}, #{civilCompensation,jdbcType=VARCHAR}, #{inpersionDate,jdbcType=VARCHAR}, 
+      #{effectDate,jdbcType=VARCHAR}, #{prisonSdate,jdbcType=VARCHAR}, #{prisonEdate,jdbcType=VARCHAR}, 
+      #{executeTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfo" >
+    insert into plc_judgment_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="handleCourt != null" >
+        handle_court,
+      </if>
+      <if test="mainCharge != null" >
+        main_charge,
+      </if>
+      <if test="mainChargeRemark != null" >
+        main_charge_remark,
+      </if>
+      <if test="judgeDate != null" >
+        judge_date,
+      </if>
+      <if test="caseNum != null" >
+        case_num,
+      </if>
+      <if test="mainTorture != null" >
+        main_torture,
+      </if>
+      <if test="freedompenaltyYear != null" >
+        freedompenalty_year,
+      </if>
+      <if test="freedompenaltyMonth != null" >
+        freedompenalty_month,
+      </if>
+      <if test="freedompenaltyDay != null" >
+        freedompenalty_day,
+      </if>
+      <if test="losepowerLifelong != null" >
+        losepower_lifelong,
+      </if>
+      <if test="losepowerYear != null" >
+        losepower_year,
+      </if>
+      <if test="losepowerMonth != null" >
+        losepower_month,
+      </if>
+      <if test="losepowerDay != null" >
+        losepower_day,
+      </if>
+      <if test="confiscateAllamount != null" >
+        confiscate_allamount,
+      </if>
+      <if test="confiscateAmount != null" >
+        confiscate_amount,
+      </if>
+      <if test="fine != null" >
+        fine,
+      </if>
+      <if test="civilCompensation != null" >
+        civil_compensation,
+      </if>
+      <if test="inpersionDate != null" >
+        inpersion_date,
+      </if>
+      <if test="effectDate != null" >
+        effect_date,
+      </if>
+      <if test="prisonSdate != null" >
+        prison_sdate,
+      </if>
+      <if test="prisonEdate != null" >
+        prison_edate,
+      </if>
+      <if test="executeTime != null" >
+        execute_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="handleCourt != null" >
+        #{handleCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="mainCharge != null" >
+        #{mainCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="mainChargeRemark != null" >
+        #{mainChargeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeDate != null" >
+        #{judgeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null" >
+        #{caseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mainTorture != null" >
+        #{mainTorture,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyYear != null" >
+        #{freedompenaltyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyMonth != null" >
+        #{freedompenaltyMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyDay != null" >
+        #{freedompenaltyDay,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerLifelong != null" >
+        #{losepowerLifelong,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerYear != null" >
+        #{losepowerYear,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerMonth != null" >
+        #{losepowerMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerDay != null" >
+        #{losepowerDay,jdbcType=VARCHAR},
+      </if>
+      <if test="confiscateAllamount != null" >
+        #{confiscateAllamount,jdbcType=VARCHAR},
+      </if>
+      <if test="confiscateAmount != null" >
+        #{confiscateAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="fine != null" >
+        #{fine,jdbcType=VARCHAR},
+      </if>
+      <if test="civilCompensation != null" >
+        #{civilCompensation,jdbcType=VARCHAR},
+      </if>
+      <if test="inpersionDate != null" >
+        #{inpersionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="effectDate != null" >
+        #{effectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonSdate != null" >
+        #{prisonSdate,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonEdate != null" >
+        #{prisonEdate,jdbcType=VARCHAR},
+      </if>
+      <if test="executeTime != null" >
+        #{executeTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfo" >
+    update plc_judgment_info
+    <set >
+      <if test="handleCourt != null" >
+        handle_court = #{handleCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="mainCharge != null" >
+        main_charge = #{mainCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="mainChargeRemark != null" >
+        main_charge_remark = #{mainChargeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeDate != null" >
+        judge_date = #{judgeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseNum != null" >
+        case_num = #{caseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mainTorture != null" >
+        main_torture = #{mainTorture,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyYear != null" >
+        freedompenalty_year = #{freedompenaltyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyMonth != null" >
+        freedompenalty_month = #{freedompenaltyMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="freedompenaltyDay != null" >
+        freedompenalty_day = #{freedompenaltyDay,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerLifelong != null" >
+        losepower_lifelong = #{losepowerLifelong,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerYear != null" >
+        losepower_year = #{losepowerYear,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerMonth != null" >
+        losepower_month = #{losepowerMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="losepowerDay != null" >
+        losepower_day = #{losepowerDay,jdbcType=VARCHAR},
+      </if>
+      <if test="confiscateAllamount != null" >
+        confiscate_allamount = #{confiscateAllamount,jdbcType=VARCHAR},
+      </if>
+      <if test="confiscateAmount != null" >
+        confiscate_amount = #{confiscateAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="fine != null" >
+        fine = #{fine,jdbcType=VARCHAR},
+      </if>
+      <if test="civilCompensation != null" >
+        civil_compensation = #{civilCompensation,jdbcType=VARCHAR},
+      </if>
+      <if test="inpersionDate != null" >
+        inpersion_date = #{inpersionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="effectDate != null" >
+        effect_date = #{effectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonSdate != null" >
+        prison_sdate = #{prisonSdate,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonEdate != null" >
+        prison_edate = #{prisonEdate,jdbcType=VARCHAR},
+      </if>
+      <if test="executeTime != null" >
+        execute_time = #{executeTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.JudgmentInfo" >
+    update plc_judgment_info
+    set handle_court = #{handleCourt,jdbcType=VARCHAR},
+      main_charge = #{mainCharge,jdbcType=VARCHAR},
+      main_charge_remark = #{mainChargeRemark,jdbcType=VARCHAR},
+      judge_date = #{judgeDate,jdbcType=VARCHAR},
+      case_num = #{caseNum,jdbcType=VARCHAR},
+      main_torture = #{mainTorture,jdbcType=VARCHAR},
+      freedompenalty_year = #{freedompenaltyYear,jdbcType=VARCHAR},
+      freedompenalty_month = #{freedompenaltyMonth,jdbcType=VARCHAR},
+      freedompenalty_day = #{freedompenaltyDay,jdbcType=VARCHAR},
+      losepower_lifelong = #{losepowerLifelong,jdbcType=VARCHAR},
+      losepower_year = #{losepowerYear,jdbcType=VARCHAR},
+      losepower_month = #{losepowerMonth,jdbcType=VARCHAR},
+      losepower_day = #{losepowerDay,jdbcType=VARCHAR},
+      confiscate_allamount = #{confiscateAllamount,jdbcType=VARCHAR},
+      confiscate_amount = #{confiscateAmount,jdbcType=VARCHAR},
+      fine = #{fine,jdbcType=VARCHAR},
+      civil_compensation = #{civilCompensation,jdbcType=VARCHAR},
+      inpersion_date = #{inpersionDate,jdbcType=VARCHAR},
+      effect_date = #{effectDate,jdbcType=VARCHAR},
+      prison_sdate = #{prisonSdate,jdbcType=VARCHAR},
+      prison_edate = #{prisonEdate,jdbcType=VARCHAR},
+      execute_time = #{executeTime,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

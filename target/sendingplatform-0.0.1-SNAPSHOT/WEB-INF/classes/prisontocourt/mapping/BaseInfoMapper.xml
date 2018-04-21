@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.dao.BaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    <result column="penalty_change_type" jdbcType="INTEGER" property="penaltyChangeType" />
+    <result column="main_charge" jdbcType="INTEGER" property="mainCharge" />
+    <result column="chaege_remark" jdbcType="VARCHAR" property="chaegeRemark" />
+    <result column="parole_type" jdbcType="INTEGER" property="paroleType" />
+    <result column="crim_id" jdbcType="VARCHAR" property="crimId" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo (penalty_change_type, main_charge, chaege_remark, 
+      parole_type, crim_id, batch_id
+      )
+    values (#{penaltyChangeType,jdbcType=INTEGER}, #{mainCharge,jdbcType=INTEGER}, #{chaegeRemark,jdbcType=VARCHAR}, 
+      #{paroleType,jdbcType=INTEGER}, #{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="penaltyChangeType != null">
+        penalty_change_type,
+      </if>
+      <if test="mainCharge != null">
+        main_charge,
+      </if>
+      <if test="chaegeRemark != null">
+        chaege_remark,
+      </if>
+      <if test="paroleType != null">
+        parole_type,
+      </if>
+      <if test="crimId != null">
+        crim_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="penaltyChangeType != null">
+        #{penaltyChangeType,jdbcType=INTEGER},
+      </if>
+      <if test="mainCharge != null">
+        #{mainCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chaegeRemark != null">
+        #{chaegeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="paroleType != null">
+        #{paroleType,jdbcType=INTEGER},
+      </if>
+      <if test="crimId != null">
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="main.java.com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    <result column="penalty_change_type" jdbcType="INTEGER" property="penaltyChangeType" />
+    <result column="main_charge" jdbcType="INTEGER" property="mainCharge" />
+    <result column="chaege_remark" jdbcType="VARCHAR" property="chaegeRemark" />
+    <result column="parole_type" jdbcType="INTEGER" property="paroleType" />
+    <result column="crim_id" jdbcType="VARCHAR" property="crimId" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+  </resultMap>
+  <insert id="insert" parameterType="main.java.com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo (penalty_change_type, main_charge, chaege_remark, 
+      parole_type, crim_id, batch_id
+      )
+    values (#{penaltyChangeType,jdbcType=INTEGER}, #{mainCharge,jdbcType=INTEGER}, #{chaegeRemark,jdbcType=VARCHAR}, 
+      #{paroleType,jdbcType=INTEGER}, #{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="penaltyChangeType != null">
+        penalty_change_type,
+      </if>
+      <if test="mainCharge != null">
+        main_charge,
+      </if>
+      <if test="chaegeRemark != null">
+        chaege_remark,
+      </if>
+      <if test="paroleType != null">
+        parole_type,
+      </if>
+      <if test="crimId != null">
+        crim_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="penaltyChangeType != null">
+        #{penaltyChangeType,jdbcType=INTEGER},
+      </if>
+      <if test="mainCharge != null">
+        #{mainCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chaegeRemark != null">
+        #{chaegeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="paroleType != null">
+        #{paroleType,jdbcType=INTEGER},
+      </if>
+      <if test="crimId != null">
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

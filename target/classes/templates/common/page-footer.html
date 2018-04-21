@@ -1,0 +1,16 @@
+<div id="callBackPager"></div>
+<script src="../../bootstrap/js/extendPagination.js"></script>
+<script type="text/javascript">
+    //这段代码不许要动
+    function callBackPagination(showCount, limit, totalCount) {
+        createTable(1, limit, totalCount); //第一次调用(加载第一页数据)
+        $('#callBackPager').extendPagination({  //根据传入的参数生成分页控件
+            totalCount: totalCount,
+            showCount: showCount,
+            limit: limit,
+            callback: function (curr, limit, totalCount) {//当点击分页控件页码时会触发此回调函数
+                createTable(curr, limit, totalCount);
+            }
+        });
+    }
+</script>
