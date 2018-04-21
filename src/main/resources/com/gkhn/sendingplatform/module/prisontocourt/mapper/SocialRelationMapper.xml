@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.SocialRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelation" >
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="appellation" property="appellation" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="VARCHAR" />
+    <result column="politic_status" property="politicStatus" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="professional" property="professional" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="work_company" property="workCompany" jdbcType="VARCHAR" />
+    <result column="main_contact" property="mainContact" jdbcType="VARCHAR" />
+    <result column="contactor" property="contactor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    crim_id, batch_id, name, gender, appellation, birthdate, politic_status, address, 
+    professional, duty, work_company, main_contact, contactor
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelationKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_social_relation
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelationKey" >
+    delete from plc_social_relation
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelation" >
+    insert into plc_social_relation (crim_id, batch_id, name, 
+      gender, appellation, birthdate, 
+      politic_status, address, professional, 
+      duty, work_company, main_contact, 
+      contactor)
+    values (#{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{appellation,jdbcType=VARCHAR}, #{birthdate,jdbcType=VARCHAR}, 
+      #{politicStatus,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{professional,jdbcType=VARCHAR}, 
+      #{duty,jdbcType=VARCHAR}, #{workCompany,jdbcType=VARCHAR}, #{mainContact,jdbcType=VARCHAR}, 
+      #{contactor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelation" >
+    insert into plc_social_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="appellation != null" >
+        appellation,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="politicStatus != null" >
+        politic_status,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="professional != null" >
+        professional,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="workCompany != null" >
+        work_company,
+      </if>
+      <if test="mainContact != null" >
+        main_contact,
+      </if>
+      <if test="contactor != null" >
+        contactor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="appellation != null" >
+        #{appellation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="politicStatus != null" >
+        #{politicStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="workCompany != null" >
+        #{workCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="mainContact != null" >
+        #{mainContact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactor != null" >
+        #{contactor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelation" >
+    update plc_social_relation
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="appellation != null" >
+        appellation = #{appellation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="politicStatus != null" >
+        politic_status = #{politicStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null" >
+        professional = #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="workCompany != null" >
+        work_company = #{workCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="mainContact != null" >
+        main_contact = #{mainContact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactor != null" >
+        contactor = #{contactor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SocialRelation" >
+    update plc_social_relation
+    set name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      appellation = #{appellation,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=VARCHAR},
+      politic_status = #{politicStatus,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      professional = #{professional,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      work_company = #{workCompany,jdbcType=VARCHAR},
+      main_contact = #{mainContact,jdbcType=VARCHAR},
+      contactor = #{contactor,jdbcType=VARCHAR}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+</mapper>

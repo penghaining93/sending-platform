@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.SubmitinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.Submitinfo" >
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <result column="submit_office" property="submitOffice" jdbcType="VARCHAR" />
+    <result column="recive_court" property="reciveCourt" jdbcType="VARCHAR" />
+    <result column="submit_reason" property="submitReason" jdbcType="VARCHAR" />
+    <result column="injail_office" property="injailOffice" jdbcType="VARCHAR" />
+    <result column="submit_date" property="submitDate" jdbcType="VARCHAR" />
+    <result column="jail_area" property="jailArea" jdbcType="VARCHAR" />
+    <result column="before_mainpenalties" property="beforeMainpenalties" jdbcType="VARCHAR" />
+    <result column="before_loseright_lifelong" property="beforeLoserightLifelong" jdbcType="INTEGER" />
+    <result column="before_loseright_year" property="beforeLoserightYear" jdbcType="INTEGER" />
+    <result column="before_loseright_month" property="beforeLoserightMonth" jdbcType="INTEGER" />
+    <result column="before_loseright_day" property="beforeLoserightDay" jdbcType="INTEGER" />
+    <result column="before_freedompenalty_year" property="beforeFreedompenaltyYear" jdbcType="INTEGER" />
+    <result column="before_freedompenalty_month" property="beforeFreedompenaltyMonth" jdbcType="INTEGER" />
+    <result column="before_freedompenalty_day" property="beforeFreedompenaltyDay" jdbcType="INTEGER" />
+    <result column="now_applycommutation_year" property="nowApplycommutationYear" jdbcType="INTEGER" />
+    <result column="now_applycommutation_month" property="nowApplycommutationMonth" jdbcType="INTEGER" />
+    <result column="now_applycommutation_day" property="nowApplycommutationDay" jdbcType="VARCHAR" />
+    <result column="changed_mainpenalties" property="changedMainpenalties" jdbcType="VARCHAR" />
+    <result column="severely_condition" property="severelyCondition" jdbcType="VARCHAR" />
+    <result column="leniently_condition" property="lenientlyCondition" jdbcType="VARCHAR" />
+    <result column="imprisonment_enddate" property="imprisonmentEnddate" jdbcType="VARCHAR" />
+    <result column="yetreduce_year" property="yetreduceYear" jdbcType="VARCHAR" />
+    <result column="yetreduce_month" property="yetreduceMonth" jdbcType="VARCHAR" />
+    <result column="yetreduce_day" property="yetreduceDay" jdbcType="VARCHAR" />
+    <result column="now_freedompenalty_year" property="nowFreedompenaltyYear" jdbcType="VARCHAR" />
+    <result column="now_freedompenalty_month" property="nowFreedompenaltyMonth" jdbcType="VARCHAR" />
+    <result column="now_freedompenalty_day" property="nowFreedompenaltyDay" jdbcType="VARCHAR" />
+    <result column="operation_time" property="operationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    crim_id, batch_id, submit_office, recive_court, submit_reason, injail_office, submit_date, 
+    jail_area, before_mainpenalties, before_loseright_lifelong, before_loseright_year, 
+    before_loseright_month, before_loseright_day, before_freedompenalty_year, before_freedompenalty_month, 
+    before_freedompenalty_day, now_applycommutation_year, now_applycommutation_month, 
+    now_applycommutation_day, changed_mainpenalties, severely_condition, leniently_condition, 
+    imprisonment_enddate, yetreduce_year, yetreduce_month, yetreduce_day, now_freedompenalty_year, 
+    now_freedompenalty_month, now_freedompenalty_day, operation_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SubmitinfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_caseinfo_submitinfo
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.SubmitinfoKey" >
+    delete from plc_caseinfo_submitinfo
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Submitinfo" >
+    insert into plc_caseinfo_submitinfo (crim_id, batch_id, submit_office, 
+      recive_court, submit_reason, injail_office, 
+      submit_date, jail_area, before_mainpenalties, 
+      before_loseright_lifelong, before_loseright_year, 
+      before_loseright_month, before_loseright_day, 
+      before_freedompenalty_year, before_freedompenalty_month, 
+      before_freedompenalty_day, now_applycommutation_year, 
+      now_applycommutation_month, now_applycommutation_day, 
+      changed_mainpenalties, severely_condition, 
+      leniently_condition, imprisonment_enddate, 
+      yetreduce_year, yetreduce_month, yetreduce_day, 
+      now_freedompenalty_year, now_freedompenalty_month, 
+      now_freedompenalty_day, operation_time)
+    values (#{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{submitOffice,jdbcType=VARCHAR}, 
+      #{reciveCourt,jdbcType=VARCHAR}, #{submitReason,jdbcType=VARCHAR}, #{injailOffice,jdbcType=VARCHAR}, 
+      #{submitDate,jdbcType=VARCHAR}, #{jailArea,jdbcType=VARCHAR}, #{beforeMainpenalties,jdbcType=VARCHAR}, 
+      #{beforeLoserightLifelong,jdbcType=INTEGER}, #{beforeLoserightYear,jdbcType=INTEGER}, 
+      #{beforeLoserightMonth,jdbcType=INTEGER}, #{beforeLoserightDay,jdbcType=INTEGER}, 
+      #{beforeFreedompenaltyYear,jdbcType=INTEGER}, #{beforeFreedompenaltyMonth,jdbcType=INTEGER}, 
+      #{beforeFreedompenaltyDay,jdbcType=INTEGER}, #{nowApplycommutationYear,jdbcType=INTEGER}, 
+      #{nowApplycommutationMonth,jdbcType=INTEGER}, #{nowApplycommutationDay,jdbcType=VARCHAR}, 
+      #{changedMainpenalties,jdbcType=VARCHAR}, #{severelyCondition,jdbcType=VARCHAR}, 
+      #{lenientlyCondition,jdbcType=VARCHAR}, #{imprisonmentEnddate,jdbcType=VARCHAR}, 
+      #{yetreduceYear,jdbcType=VARCHAR}, #{yetreduceMonth,jdbcType=VARCHAR}, #{yetreduceDay,jdbcType=VARCHAR}, 
+      #{nowFreedompenaltyYear,jdbcType=VARCHAR}, #{nowFreedompenaltyMonth,jdbcType=VARCHAR}, 
+      #{nowFreedompenaltyDay,jdbcType=VARCHAR}, #{operationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Submitinfo" >
+    insert into plc_caseinfo_submitinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="submitOffice != null" >
+        submit_office,
+      </if>
+      <if test="reciveCourt != null" >
+        recive_court,
+      </if>
+      <if test="submitReason != null" >
+        submit_reason,
+      </if>
+      <if test="injailOffice != null" >
+        injail_office,
+      </if>
+      <if test="submitDate != null" >
+        submit_date,
+      </if>
+      <if test="jailArea != null" >
+        jail_area,
+      </if>
+      <if test="beforeMainpenalties != null" >
+        before_mainpenalties,
+      </if>
+      <if test="beforeLoserightLifelong != null" >
+        before_loseright_lifelong,
+      </if>
+      <if test="beforeLoserightYear != null" >
+        before_loseright_year,
+      </if>
+      <if test="beforeLoserightMonth != null" >
+        before_loseright_month,
+      </if>
+      <if test="beforeLoserightDay != null" >
+        before_loseright_day,
+      </if>
+      <if test="beforeFreedompenaltyYear != null" >
+        before_freedompenalty_year,
+      </if>
+      <if test="beforeFreedompenaltyMonth != null" >
+        before_freedompenalty_month,
+      </if>
+      <if test="beforeFreedompenaltyDay != null" >
+        before_freedompenalty_day,
+      </if>
+      <if test="nowApplycommutationYear != null" >
+        now_applycommutation_year,
+      </if>
+      <if test="nowApplycommutationMonth != null" >
+        now_applycommutation_month,
+      </if>
+      <if test="nowApplycommutationDay != null" >
+        now_applycommutation_day,
+      </if>
+      <if test="changedMainpenalties != null" >
+        changed_mainpenalties,
+      </if>
+      <if test="severelyCondition != null" >
+        severely_condition,
+      </if>
+      <if test="lenientlyCondition != null" >
+        leniently_condition,
+      </if>
+      <if test="imprisonmentEnddate != null" >
+        imprisonment_enddate,
+      </if>
+      <if test="yetreduceYear != null" >
+        yetreduce_year,
+      </if>
+      <if test="yetreduceMonth != null" >
+        yetreduce_month,
+      </if>
+      <if test="yetreduceDay != null" >
+        yetreduce_day,
+      </if>
+      <if test="nowFreedompenaltyYear != null" >
+        now_freedompenalty_year,
+      </if>
+      <if test="nowFreedompenaltyMonth != null" >
+        now_freedompenalty_month,
+      </if>
+      <if test="nowFreedompenaltyDay != null" >
+        now_freedompenalty_day,
+      </if>
+      <if test="operationTime != null" >
+        operation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="submitOffice != null" >
+        #{submitOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveCourt != null" >
+        #{reciveCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="submitReason != null" >
+        #{submitReason,jdbcType=VARCHAR},
+      </if>
+      <if test="injailOffice != null" >
+        #{injailOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="jailArea != null" >
+        #{jailArea,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeMainpenalties != null" >
+        #{beforeMainpenalties,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeLoserightLifelong != null" >
+        #{beforeLoserightLifelong,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightYear != null" >
+        #{beforeLoserightYear,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightMonth != null" >
+        #{beforeLoserightMonth,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightDay != null" >
+        #{beforeLoserightDay,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyYear != null" >
+        #{beforeFreedompenaltyYear,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyMonth != null" >
+        #{beforeFreedompenaltyMonth,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyDay != null" >
+        #{beforeFreedompenaltyDay,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationYear != null" >
+        #{nowApplycommutationYear,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationMonth != null" >
+        #{nowApplycommutationMonth,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationDay != null" >
+        #{nowApplycommutationDay,jdbcType=VARCHAR},
+      </if>
+      <if test="changedMainpenalties != null" >
+        #{changedMainpenalties,jdbcType=VARCHAR},
+      </if>
+      <if test="severelyCondition != null" >
+        #{severelyCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="lenientlyCondition != null" >
+        #{lenientlyCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="imprisonmentEnddate != null" >
+        #{imprisonmentEnddate,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceYear != null" >
+        #{yetreduceYear,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceMonth != null" >
+        #{yetreduceMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceDay != null" >
+        #{yetreduceDay,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyYear != null" >
+        #{nowFreedompenaltyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyMonth != null" >
+        #{nowFreedompenaltyMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyDay != null" >
+        #{nowFreedompenaltyDay,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Submitinfo" >
+    update plc_caseinfo_submitinfo
+    <set >
+      <if test="submitOffice != null" >
+        submit_office = #{submitOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="reciveCourt != null" >
+        recive_court = #{reciveCourt,jdbcType=VARCHAR},
+      </if>
+      <if test="submitReason != null" >
+        submit_reason = #{submitReason,jdbcType=VARCHAR},
+      </if>
+      <if test="injailOffice != null" >
+        injail_office = #{injailOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDate != null" >
+        submit_date = #{submitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="jailArea != null" >
+        jail_area = #{jailArea,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeMainpenalties != null" >
+        before_mainpenalties = #{beforeMainpenalties,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeLoserightLifelong != null" >
+        before_loseright_lifelong = #{beforeLoserightLifelong,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightYear != null" >
+        before_loseright_year = #{beforeLoserightYear,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightMonth != null" >
+        before_loseright_month = #{beforeLoserightMonth,jdbcType=INTEGER},
+      </if>
+      <if test="beforeLoserightDay != null" >
+        before_loseright_day = #{beforeLoserightDay,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyYear != null" >
+        before_freedompenalty_year = #{beforeFreedompenaltyYear,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyMonth != null" >
+        before_freedompenalty_month = #{beforeFreedompenaltyMonth,jdbcType=INTEGER},
+      </if>
+      <if test="beforeFreedompenaltyDay != null" >
+        before_freedompenalty_day = #{beforeFreedompenaltyDay,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationYear != null" >
+        now_applycommutation_year = #{nowApplycommutationYear,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationMonth != null" >
+        now_applycommutation_month = #{nowApplycommutationMonth,jdbcType=INTEGER},
+      </if>
+      <if test="nowApplycommutationDay != null" >
+        now_applycommutation_day = #{nowApplycommutationDay,jdbcType=VARCHAR},
+      </if>
+      <if test="changedMainpenalties != null" >
+        changed_mainpenalties = #{changedMainpenalties,jdbcType=VARCHAR},
+      </if>
+      <if test="severelyCondition != null" >
+        severely_condition = #{severelyCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="lenientlyCondition != null" >
+        leniently_condition = #{lenientlyCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="imprisonmentEnddate != null" >
+        imprisonment_enddate = #{imprisonmentEnddate,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceYear != null" >
+        yetreduce_year = #{yetreduceYear,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceMonth != null" >
+        yetreduce_month = #{yetreduceMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="yetreduceDay != null" >
+        yetreduce_day = #{yetreduceDay,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyYear != null" >
+        now_freedompenalty_year = #{nowFreedompenaltyYear,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyMonth != null" >
+        now_freedompenalty_month = #{nowFreedompenaltyMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="nowFreedompenaltyDay != null" >
+        now_freedompenalty_day = #{nowFreedompenaltyDay,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Submitinfo" >
+    update plc_caseinfo_submitinfo
+    set submit_office = #{submitOffice,jdbcType=VARCHAR},
+      recive_court = #{reciveCourt,jdbcType=VARCHAR},
+      submit_reason = #{submitReason,jdbcType=VARCHAR},
+      injail_office = #{injailOffice,jdbcType=VARCHAR},
+      submit_date = #{submitDate,jdbcType=VARCHAR},
+      jail_area = #{jailArea,jdbcType=VARCHAR},
+      before_mainpenalties = #{beforeMainpenalties,jdbcType=VARCHAR},
+      before_loseright_lifelong = #{beforeLoserightLifelong,jdbcType=INTEGER},
+      before_loseright_year = #{beforeLoserightYear,jdbcType=INTEGER},
+      before_loseright_month = #{beforeLoserightMonth,jdbcType=INTEGER},
+      before_loseright_day = #{beforeLoserightDay,jdbcType=INTEGER},
+      before_freedompenalty_year = #{beforeFreedompenaltyYear,jdbcType=INTEGER},
+      before_freedompenalty_month = #{beforeFreedompenaltyMonth,jdbcType=INTEGER},
+      before_freedompenalty_day = #{beforeFreedompenaltyDay,jdbcType=INTEGER},
+      now_applycommutation_year = #{nowApplycommutationYear,jdbcType=INTEGER},
+      now_applycommutation_month = #{nowApplycommutationMonth,jdbcType=INTEGER},
+      now_applycommutation_day = #{nowApplycommutationDay,jdbcType=VARCHAR},
+      changed_mainpenalties = #{changedMainpenalties,jdbcType=VARCHAR},
+      severely_condition = #{severelyCondition,jdbcType=VARCHAR},
+      leniently_condition = #{lenientlyCondition,jdbcType=VARCHAR},
+      imprisonment_enddate = #{imprisonmentEnddate,jdbcType=VARCHAR},
+      yetreduce_year = #{yetreduceYear,jdbcType=VARCHAR},
+      yetreduce_month = #{yetreduceMonth,jdbcType=VARCHAR},
+      yetreduce_day = #{yetreduceDay,jdbcType=VARCHAR},
+      now_freedompenalty_year = #{nowFreedompenaltyYear,jdbcType=VARCHAR},
+      now_freedompenalty_month = #{nowFreedompenaltyMonth,jdbcType=VARCHAR},
+      now_freedompenalty_day = #{nowFreedompenaltyDay,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+</mapper>

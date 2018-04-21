@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.CaseMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.Case" >
+    <id column="case_id" property="caseId" jdbcType="INTEGER" />
+    <result column="depart_id" property="departId" jdbcType="VARCHAR" />
+    <result column="now_year" property="nowYear" jdbcType="VARCHAR" />
+    <result column="batch" property="batchId" jdbcType="VARCHAR" />
+    <result column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="court_id" property="courtId" jdbcType="VARCHAR" />
+    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    case_id, depart_id, now_year, batch, crim_id, court_id, receive_time, send_time,
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from plc_case
+    where case_id = #{caseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from plc_case
+    where case_id = #{caseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Case" >
+    insert into plc_case (case_id, depart_id, now_year, 
+      batch, crim_id, court_id,
+      receive_time, send_time, status
+      )
+    values (#{caseId,jdbcType=INTEGER}, #{departId,jdbcType=VARCHAR}, #{nowYear,jdbcType=VARCHAR}, 
+      #{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{courtId,jdbcType=VARCHAR}, 
+      #{receiveTime,jdbcType=TIMESTAMP}, #{sendTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Case" >
+    insert into plc_case
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caseId != null" >
+        case_id,
+      </if>
+      <if test="departId != null" >
+        depart_id,
+      </if>
+      <if test="nowYear != null" >
+        now_year,
+      </if>
+      <if test="batchId != null" >
+          batch,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="courtId != null" >
+        court_id,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caseId != null" >
+        #{caseId,jdbcType=INTEGER},
+      </if>
+      <if test="departId != null" >
+        #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="nowYear != null" >
+        #{nowYear,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="courtId != null" >
+        #{courtId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Case" >
+    update plc_case
+    <set >
+      <if test="departId != null" >
+        depart_id = #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="nowYear != null" >
+        now_year = #{nowYear,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        batch = #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        crim_id = #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="courtId != null" >
+        court_id = #{courtId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where case_id = #{caseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.Case" >
+    update plc_case
+    set depart_id = #{departId,jdbcType=VARCHAR},
+      now_year = #{nowYear,jdbcType=VARCHAR},
+      batch = #{batchId,jdbcType=VARCHAR},
+      crim_id = #{crimId,jdbcType=VARCHAR},
+      court_id = #{courtId,jdbcType=VARCHAR},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where case_id = #{caseId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByDepartIdAndBatch" >
+    SELECT  * from plc_case where batch = #{batchId,jdbcType=VARCHAR} and ,
+  </select>
+</mapper>

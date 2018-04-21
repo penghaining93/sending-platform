@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.ProAwardPerMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPer" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="pen_money" property="penMoney" jdbcType="VARCHAR" />
+    <result column="has_pay_money" property="hasPayMoney" jdbcType="VARCHAR" />
+    <result column="the_pay_money" property="thePayMoney" jdbcType="VARCHAR" />
+    <result column="civil_pay_money" property="civilPayMoney" jdbcType="VARCHAR" />
+    <result column="amount_pay" property="amountPay" jdbcType="VARCHAR" />
+    <result column="amount_comp" property="amountComp" jdbcType="VARCHAR" />
+    <result column="pro_punishment" property="proPunishment" jdbcType="VARCHAR" />
+    <result column="exe_pro_punishment" property="exeProPunishment" jdbcType="VARCHAR" />
+    <result column="judge_refued_pay" property="judgeRefuedPay" jdbcType="VARCHAR" />
+    <result column="amount_unindemnity" property="amountUnindemnity" jdbcType="VARCHAR" />
+    <result column="amount_judge" property="amountJudge" jdbcType="VARCHAR" />
+    <result column="amount_paid" property="amountPaid" jdbcType="VARCHAR" />
+    <result column="outstanding_amount" property="outstandingAmount" jdbcType="VARCHAR" />
+    <result column="amount_unexe" property="amountUnexe" jdbcType="VARCHAR" />
+    <result column="judge_conf_money" property="judgeConfMoney" jdbcType="VARCHAR" />
+    <result column="judge_money_exe" property="judgeMoneyExe" jdbcType="VARCHAR" />
+    <result column="judge_money_unexe" property="judgeMoneyUnexe" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, pen_money, has_pay_money, the_pay_money, civil_pay_money, amount_pay, 
+    amount_comp, pro_punishment, exe_pro_punishment, judge_refued_pay, amount_unindemnity, 
+    amount_judge, amount_paid, outstanding_amount, amount_unexe, judge_conf_money, judge_money_exe, 
+    judge_money_unexe
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPerKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_pro_award_per
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPerKey" >
+    delete from plc_pro_award_per
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPer" >
+    insert into plc_pro_award_per (batch_id, crim_id, pen_money, 
+      has_pay_money, the_pay_money, civil_pay_money, 
+      amount_pay, amount_comp, pro_punishment, 
+      exe_pro_punishment, judge_refued_pay, amount_unindemnity, 
+      amount_judge, amount_paid, outstanding_amount, 
+      amount_unexe, judge_conf_money, judge_money_exe, 
+      judge_money_unexe)
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{penMoney,jdbcType=VARCHAR}, 
+      #{hasPayMoney,jdbcType=VARCHAR}, #{thePayMoney,jdbcType=VARCHAR}, #{civilPayMoney,jdbcType=VARCHAR}, 
+      #{amountPay,jdbcType=VARCHAR}, #{amountComp,jdbcType=VARCHAR}, #{proPunishment,jdbcType=VARCHAR}, 
+      #{exeProPunishment,jdbcType=VARCHAR}, #{judgeRefuedPay,jdbcType=VARCHAR}, #{amountUnindemnity,jdbcType=VARCHAR}, 
+      #{amountJudge,jdbcType=VARCHAR}, #{amountPaid,jdbcType=VARCHAR}, #{outstandingAmount,jdbcType=VARCHAR}, 
+      #{amountUnexe,jdbcType=VARCHAR}, #{judgeConfMoney,jdbcType=VARCHAR}, #{judgeMoneyExe,jdbcType=VARCHAR}, 
+      #{judgeMoneyUnexe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPer" >
+    insert into plc_pro_award_per
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="penMoney != null" >
+        pen_money,
+      </if>
+      <if test="hasPayMoney != null" >
+        has_pay_money,
+      </if>
+      <if test="thePayMoney != null" >
+        the_pay_money,
+      </if>
+      <if test="civilPayMoney != null" >
+        civil_pay_money,
+      </if>
+      <if test="amountPay != null" >
+        amount_pay,
+      </if>
+      <if test="amountComp != null" >
+        amount_comp,
+      </if>
+      <if test="proPunishment != null" >
+        pro_punishment,
+      </if>
+      <if test="exeProPunishment != null" >
+        exe_pro_punishment,
+      </if>
+      <if test="judgeRefuedPay != null" >
+        judge_refued_pay,
+      </if>
+      <if test="amountUnindemnity != null" >
+        amount_unindemnity,
+      </if>
+      <if test="amountJudge != null" >
+        amount_judge,
+      </if>
+      <if test="amountPaid != null" >
+        amount_paid,
+      </if>
+      <if test="outstandingAmount != null" >
+        outstanding_amount,
+      </if>
+      <if test="amountUnexe != null" >
+        amount_unexe,
+      </if>
+      <if test="judgeConfMoney != null" >
+        judge_conf_money,
+      </if>
+      <if test="judgeMoneyExe != null" >
+        judge_money_exe,
+      </if>
+      <if test="judgeMoneyUnexe != null" >
+        judge_money_unexe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="penMoney != null" >
+        #{penMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="hasPayMoney != null" >
+        #{hasPayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="thePayMoney != null" >
+        #{thePayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="civilPayMoney != null" >
+        #{civilPayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPay != null" >
+        #{amountPay,jdbcType=VARCHAR},
+      </if>
+      <if test="amountComp != null" >
+        #{amountComp,jdbcType=VARCHAR},
+      </if>
+      <if test="proPunishment != null" >
+        #{proPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="exeProPunishment != null" >
+        #{exeProPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeRefuedPay != null" >
+        #{judgeRefuedPay,jdbcType=VARCHAR},
+      </if>
+      <if test="amountUnindemnity != null" >
+        #{amountUnindemnity,jdbcType=VARCHAR},
+      </if>
+      <if test="amountJudge != null" >
+        #{amountJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaid != null" >
+        #{amountPaid,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingAmount != null" >
+        #{outstandingAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="amountUnexe != null" >
+        #{amountUnexe,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeConfMoney != null" >
+        #{judgeConfMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeMoneyExe != null" >
+        #{judgeMoneyExe,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeMoneyUnexe != null" >
+        #{judgeMoneyUnexe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPer" >
+    update plc_pro_award_per
+    <set >
+      <if test="penMoney != null" >
+        pen_money = #{penMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="hasPayMoney != null" >
+        has_pay_money = #{hasPayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="thePayMoney != null" >
+        the_pay_money = #{thePayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="civilPayMoney != null" >
+        civil_pay_money = #{civilPayMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPay != null" >
+        amount_pay = #{amountPay,jdbcType=VARCHAR},
+      </if>
+      <if test="amountComp != null" >
+        amount_comp = #{amountComp,jdbcType=VARCHAR},
+      </if>
+      <if test="proPunishment != null" >
+        pro_punishment = #{proPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="exeProPunishment != null" >
+        exe_pro_punishment = #{exeProPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeRefuedPay != null" >
+        judge_refued_pay = #{judgeRefuedPay,jdbcType=VARCHAR},
+      </if>
+      <if test="amountUnindemnity != null" >
+        amount_unindemnity = #{amountUnindemnity,jdbcType=VARCHAR},
+      </if>
+      <if test="amountJudge != null" >
+        amount_judge = #{amountJudge,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaid != null" >
+        amount_paid = #{amountPaid,jdbcType=VARCHAR},
+      </if>
+      <if test="outstandingAmount != null" >
+        outstanding_amount = #{outstandingAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="amountUnexe != null" >
+        amount_unexe = #{amountUnexe,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeConfMoney != null" >
+        judge_conf_money = #{judgeConfMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeMoneyExe != null" >
+        judge_money_exe = #{judgeMoneyExe,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeMoneyUnexe != null" >
+        judge_money_unexe = #{judgeMoneyUnexe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ProAwardPer" >
+    update plc_pro_award_per
+    set pen_money = #{penMoney,jdbcType=VARCHAR},
+      has_pay_money = #{hasPayMoney,jdbcType=VARCHAR},
+      the_pay_money = #{thePayMoney,jdbcType=VARCHAR},
+      civil_pay_money = #{civilPayMoney,jdbcType=VARCHAR},
+      amount_pay = #{amountPay,jdbcType=VARCHAR},
+      amount_comp = #{amountComp,jdbcType=VARCHAR},
+      pro_punishment = #{proPunishment,jdbcType=VARCHAR},
+      exe_pro_punishment = #{exeProPunishment,jdbcType=VARCHAR},
+      judge_refued_pay = #{judgeRefuedPay,jdbcType=VARCHAR},
+      amount_unindemnity = #{amountUnindemnity,jdbcType=VARCHAR},
+      amount_judge = #{amountJudge,jdbcType=VARCHAR},
+      amount_paid = #{amountPaid,jdbcType=VARCHAR},
+      outstanding_amount = #{outstandingAmount,jdbcType=VARCHAR},
+      amount_unexe = #{amountUnexe,jdbcType=VARCHAR},
+      judge_conf_money = #{judgeConfMoney,jdbcType=VARCHAR},
+      judge_money_exe = #{judgeMoneyExe,jdbcType=VARCHAR},
+      judge_money_unexe = #{judgeMoneyUnexe,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

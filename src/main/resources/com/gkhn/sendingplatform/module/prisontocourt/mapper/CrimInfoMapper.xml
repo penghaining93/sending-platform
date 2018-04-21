@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.CrimInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfo" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="papers_num" property="papersNum" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="crime_date" property="crimeDate" jdbcType="VARCHAR" />
+    <result column="crime_age" property="crimeAge" jdbcType="VARCHAR" />
+    <result column="juvenile_crime" property="juvenileCrime" jdbcType="VARCHAR" />
+    <result column="marital status" property="maritalStatus" jdbcType="VARCHAR" />
+    <result column="vocation" property="vocation" jdbcType="VARCHAR" />
+    <result column="nationality" property="nationality" jdbcType="VARCHAR" />
+    <result column="domicile" property="domicile" jdbcType="VARCHAR" />
+    <result column="home_address" property="homeAddress" jdbcType="VARCHAR" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="recidivism" property="recidivism" jdbcType="VARCHAR" />
+    <result column="combined_punishment" property="combinedPunishment" jdbcType="VARCHAR" />
+    <result column="limit_commutation" property="limitCommutation" jdbcType="VARCHAR" />
+    <result column="official_crime" property="officialCrime" jdbcType="VARCHAR" />
+    <result column="damage_financial" property="damageFinancial" jdbcType="VARCHAR" />
+    <result column="gangland_crime" property="ganglandCrime" jdbcType="VARCHAR" />
+    <result column="prison_reward" property="prisonReward" jdbcType="VARCHAR" />
+    <result column="special_plot" property="specialPlot" jdbcType="VARCHAR" />
+    <result column="inprison_date" property="inprisonDate" jdbcType="VARCHAR" />
+    <result column="execution_date" property="executionDate" jdbcType="VARCHAR" />
+    <result column="administrative_level" property="administrativeLevel" jdbcType="VARCHAR" />
+    <result column="submortgage_type" property="submortgageType" jdbcType="VARCHAR" />
+    <result column="charge_class" property="chargeClass" jdbcType="VARCHAR" />
+    <result column="original_unit" property="originalUnit" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="VARCHAR" />
+    <result column="recidivist" property="recidivist" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, name, papers_num, nation, gender, birthday, crime_date, crime_age, 
+    juvenile_crime, "marital status", vocation, nationality, domicile, home_address, 
+    native_place, recidivism, combined_punishment, limit_commutation, official_crime, 
+    damage_financial, gangland_crime, prison_reward, special_plot, inprison_date, execution_date, 
+    administrative_level, submortgage_type, charge_class, original_unit, identity, recidivist
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_crim_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfoKey" >
+    delete from plc_crim_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfo" >
+    insert into plc_crim_info (batch_id, crim_id, name, 
+      papers_num, nation, gender, 
+      birthday, crime_date, crime_age, 
+      juvenile_crime, "marital status", vocation, 
+      nationality, domicile, home_address, 
+      native_place, recidivism, combined_punishment, 
+      limit_commutation, official_crime, damage_financial, 
+      gangland_crime, prison_reward, special_plot, 
+      inprison_date, execution_date, administrative_level, 
+      submortgage_type, charge_class, original_unit, 
+      identity, recidivist)
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{papersNum,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{crimeDate,jdbcType=VARCHAR}, #{crimeAge,jdbcType=VARCHAR}, 
+      #{juvenileCrime,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, #{vocation,jdbcType=VARCHAR}, 
+      #{nationality,jdbcType=VARCHAR}, #{domicile,jdbcType=VARCHAR}, #{homeAddress,jdbcType=VARCHAR}, 
+      #{nativePlace,jdbcType=VARCHAR}, #{recidivism,jdbcType=VARCHAR}, #{combinedPunishment,jdbcType=VARCHAR}, 
+      #{limitCommutation,jdbcType=VARCHAR}, #{officialCrime,jdbcType=VARCHAR}, #{damageFinancial,jdbcType=VARCHAR}, 
+      #{ganglandCrime,jdbcType=VARCHAR}, #{prisonReward,jdbcType=VARCHAR}, #{specialPlot,jdbcType=VARCHAR}, 
+      #{inprisonDate,jdbcType=VARCHAR}, #{executionDate,jdbcType=VARCHAR}, #{administrativeLevel,jdbcType=VARCHAR}, 
+      #{submortgageType,jdbcType=VARCHAR}, #{chargeClass,jdbcType=VARCHAR}, #{originalUnit,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR}, #{recidivist,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfo" >
+    insert into plc_crim_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="papersNum != null" >
+        papers_num,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="crimeDate != null" >
+        crime_date,
+      </if>
+      <if test="crimeAge != null" >
+        crime_age,
+      </if>
+      <if test="juvenileCrime != null" >
+        juvenile_crime,
+      </if>
+      <if test="maritalStatus != null" >
+        "marital status",
+      </if>
+      <if test="vocation != null" >
+        vocation,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+      <if test="domicile != null" >
+        domicile,
+      </if>
+      <if test="homeAddress != null" >
+        home_address,
+      </if>
+      <if test="nativePlace != null" >
+        native_place,
+      </if>
+      <if test="recidivism != null" >
+        recidivism,
+      </if>
+      <if test="combinedPunishment != null" >
+        combined_punishment,
+      </if>
+      <if test="limitCommutation != null" >
+        limit_commutation,
+      </if>
+      <if test="officialCrime != null" >
+        official_crime,
+      </if>
+      <if test="damageFinancial != null" >
+        damage_financial,
+      </if>
+      <if test="ganglandCrime != null" >
+        gangland_crime,
+      </if>
+      <if test="prisonReward != null" >
+        prison_reward,
+      </if>
+      <if test="specialPlot != null" >
+        special_plot,
+      </if>
+      <if test="inprisonDate != null" >
+        inprison_date,
+      </if>
+      <if test="executionDate != null" >
+        execution_date,
+      </if>
+      <if test="administrativeLevel != null" >
+        administrative_level,
+      </if>
+      <if test="submortgageType != null" >
+        submortgage_type,
+      </if>
+      <if test="chargeClass != null" >
+        charge_class,
+      </if>
+      <if test="originalUnit != null" >
+        original_unit,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="recidivist != null" >
+        recidivist,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="papersNum != null" >
+        #{papersNum,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeDate != null" >
+        #{crimeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeAge != null" >
+        #{crimeAge,jdbcType=VARCHAR},
+      </if>
+      <if test="juvenileCrime != null" >
+        #{juvenileCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null" >
+        #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        #{homeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="recidivism != null" >
+        #{recidivism,jdbcType=VARCHAR},
+      </if>
+      <if test="combinedPunishment != null" >
+        #{combinedPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="limitCommutation != null" >
+        #{limitCommutation,jdbcType=VARCHAR},
+      </if>
+      <if test="officialCrime != null" >
+        #{officialCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="damageFinancial != null" >
+        #{damageFinancial,jdbcType=VARCHAR},
+      </if>
+      <if test="ganglandCrime != null" >
+        #{ganglandCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonReward != null" >
+        #{prisonReward,jdbcType=VARCHAR},
+      </if>
+      <if test="specialPlot != null" >
+        #{specialPlot,jdbcType=VARCHAR},
+      </if>
+      <if test="inprisonDate != null" >
+        #{inprisonDate,jdbcType=VARCHAR},
+      </if>
+      <if test="executionDate != null" >
+        #{executionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null" >
+        #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="submortgageType != null" >
+        #{submortgageType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeClass != null" >
+        #{chargeClass,jdbcType=VARCHAR},
+      </if>
+      <if test="originalUnit != null" >
+        #{originalUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="recidivist != null" >
+        #{recidivist,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfo" >
+    update plc_crim_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="papersNum != null" >
+        papers_num = #{papersNum,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeDate != null" >
+        crime_date = #{crimeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="crimeAge != null" >
+        crime_age = #{crimeAge,jdbcType=VARCHAR},
+      </if>
+      <if test="juvenileCrime != null" >
+        juvenile_crime = #{juvenileCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        "marital status" = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="vocation != null" >
+        vocation = #{vocation,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null" >
+        domicile = #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        home_address = #{homeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="recidivism != null" >
+        recidivism = #{recidivism,jdbcType=VARCHAR},
+      </if>
+      <if test="combinedPunishment != null" >
+        combined_punishment = #{combinedPunishment,jdbcType=VARCHAR},
+      </if>
+      <if test="limitCommutation != null" >
+        limit_commutation = #{limitCommutation,jdbcType=VARCHAR},
+      </if>
+      <if test="officialCrime != null" >
+        official_crime = #{officialCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="damageFinancial != null" >
+        damage_financial = #{damageFinancial,jdbcType=VARCHAR},
+      </if>
+      <if test="ganglandCrime != null" >
+        gangland_crime = #{ganglandCrime,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonReward != null" >
+        prison_reward = #{prisonReward,jdbcType=VARCHAR},
+      </if>
+      <if test="specialPlot != null" >
+        special_plot = #{specialPlot,jdbcType=VARCHAR},
+      </if>
+      <if test="inprisonDate != null" >
+        inprison_date = #{inprisonDate,jdbcType=VARCHAR},
+      </if>
+      <if test="executionDate != null" >
+        execution_date = #{executionDate,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null" >
+        administrative_level = #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="submortgageType != null" >
+        submortgage_type = #{submortgageType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeClass != null" >
+        charge_class = #{chargeClass,jdbcType=VARCHAR},
+      </if>
+      <if test="originalUnit != null" >
+        original_unit = #{originalUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="recidivist != null" >
+        recidivist = #{recidivist,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimInfo" >
+    update plc_crim_info
+    set name = #{name,jdbcType=VARCHAR},
+      papers_num = #{papersNum,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      crime_date = #{crimeDate,jdbcType=VARCHAR},
+      crime_age = #{crimeAge,jdbcType=VARCHAR},
+      juvenile_crime = #{juvenileCrime,jdbcType=VARCHAR},
+      "marital status" = #{maritalStatus,jdbcType=VARCHAR},
+      vocation = #{vocation,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      domicile = #{domicile,jdbcType=VARCHAR},
+      home_address = #{homeAddress,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      recidivism = #{recidivism,jdbcType=VARCHAR},
+      combined_punishment = #{combinedPunishment,jdbcType=VARCHAR},
+      limit_commutation = #{limitCommutation,jdbcType=VARCHAR},
+      official_crime = #{officialCrime,jdbcType=VARCHAR},
+      damage_financial = #{damageFinancial,jdbcType=VARCHAR},
+      gangland_crime = #{ganglandCrime,jdbcType=VARCHAR},
+      prison_reward = #{prisonReward,jdbcType=VARCHAR},
+      special_plot = #{specialPlot,jdbcType=VARCHAR},
+      inprison_date = #{inprisonDate,jdbcType=VARCHAR},
+      execution_date = #{executionDate,jdbcType=VARCHAR},
+      administrative_level = #{administrativeLevel,jdbcType=VARCHAR},
+      submortgage_type = #{submortgageType,jdbcType=VARCHAR},
+      charge_class = #{chargeClass,jdbcType=VARCHAR},
+      original_unit = #{originalUnit,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      recidivist = #{recidivist,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

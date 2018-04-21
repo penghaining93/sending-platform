@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.CrimOidMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOid" >
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <id column="bacth_id" property="bacthId" jdbcType="VARCHAR" />
+    <result column="oid_type" property="oidType" jdbcType="VARCHAR" />
+    <result column="confirm_time" property="confirmTime" jdbcType="VARCHAR" />
+    <result column="revocation_time" property="revocationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    crim_id, bacth_id, oid_type, confirm_time, revocation_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOidKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_crim_oid
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and bacth_id = #{bacthId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOidKey" >
+    delete from plc_crim_oid
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and bacth_id = #{bacthId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOid" >
+    insert into plc_crim_oid (crim_id, bacth_id, oid_type, 
+      confirm_time, revocation_time)
+    values (#{crimId,jdbcType=VARCHAR}, #{bacthId,jdbcType=VARCHAR}, #{oidType,jdbcType=VARCHAR}, 
+      #{confirmTime,jdbcType=VARCHAR}, #{revocationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOid" >
+    insert into plc_crim_oid
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="bacthId != null" >
+        bacth_id,
+      </if>
+      <if test="oidType != null" >
+        oid_type,
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time,
+      </if>
+      <if test="revocationTime != null" >
+        revocation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="bacthId != null" >
+        #{bacthId,jdbcType=VARCHAR},
+      </if>
+      <if test="oidType != null" >
+        #{oidType,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        #{confirmTime,jdbcType=VARCHAR},
+      </if>
+      <if test="revocationTime != null" >
+        #{revocationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOid" >
+    update plc_crim_oid
+    <set >
+      <if test="oidType != null" >
+        oid_type = #{oidType,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time = #{confirmTime,jdbcType=VARCHAR},
+      </if>
+      <if test="revocationTime != null" >
+        revocation_time = #{revocationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and bacth_id = #{bacthId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.CrimOid" >
+    update plc_crim_oid
+    set oid_type = #{oidType,jdbcType=VARCHAR},
+      confirm_time = #{confirmTime,jdbcType=VARCHAR},
+      revocation_time = #{revocationTime,jdbcType=TIMESTAMP}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and bacth_id = #{bacthId,jdbcType=VARCHAR}
+  </update>
+</mapper>

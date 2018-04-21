@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include = "common/dataverifyhead">
+    <title>首页</title>
+</head>
+<!--/*@thymesVar id="name" type="java.lang.String"*/-->
+<body>
+<header class="navbar navbar-static-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <nav class="collapse navbar-collapse">
+                <h1>数据校验</h1><h3>案件列表</h3>
+                <ul class="nav navbar-nav">
+                    <!--<li class="headline" th:text="${data.departName}"></li>
+                    <li class="headline" th:text="${data.departName}">日期</li>
+                    <li class="headline" th:text="${data.departName}">天气</li>-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <div class="jumbobuttons">
+            <th style="width: 300px;">
+                <label class="col-sm-3 control-label">选择年份:</label>
+                <input type="text" class="form-control form-filter yearpicker" style="width: 200px;float:right;text-align: center;" readonly="true" name="year" id="Year" />
+            </th>
+            <th style="width: 300px;">
+                <label class="col-sm-3 control-label">选择批次:</label>
+                <select class="form-control form-filter selectpicker" style="width: 200px;float:right;">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+            </th>
+            <th style="width: 100px;">
+                <button type="submit" class="btn btn-success" onclick="login()">查 询</button>
+            </th>
+        </div>
+        </thead>
+    </table>
+</div>
+
+<div class="container">
+    <table id="table" class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>部门ID</th>
+            <th>年份</th>
+            <th>批次</th>
+            <th>罪犯编号</th>
+            <th>法院</th>
+            <th>IN STOCK</th>
+        </tr>
+        <tr th:each="list,iterStat : ${list}" th:class="${iterStat.odd}? 'odd'">
+            <td th:text="${list.departId}">Onions</td>
+            <td th:text="${list.nowYear}">2.41</td>
+            <td th:text="${list.batchId}">2.41</td>
+            <td th:text="${list.crimId}">2.41</td>
+            <td th:text="${list.courtId}">2.41</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:include="common/page-footer"></div>
+</body>
+<!--分页JS-->
+<script th:inline = "javascript" type="text/javascript">
+    //获取总条数
+    var total = '@ViewBag.count';
+    $(function () {
+        //进入页面的时候需要调用callBackPagination这个函数，传入当前页，页大小，总页数
+        //参数一：当前页 参数二：页大小  参数三：数据总条数（不需要传递总页数）
+        callBackPagination(1, 10, total);
+    })
+    //用的时候只需要写下面这段ajax代码就可以
+    //用分页的时候用该方法，不要改方法名
+    function createTable(currPage, limit, total) {
+       /* $.post("caseListR", { currPage: currPage, pageSize: limit ,departId : '4307', batch :'1' }, function (data) {
+            /!* $("#tb").empty();
+             $.each(data, function (k, v) {
+                 $("#tb").append("<tr><td>" + v.locId + "</td><td>" + v.locName + "</td><td>" + v.parentId + "</td></tr>")
+             });*!/
+        })*/
+        var opt = {
+            url: "http://127.0.0.1/dataVerify/caseListR?currPage="+currPage+"&amp;pageSize="+limit+"&amp;departId=4307&amp;batch=4",
+            silent: true,
+            query:{
+                type:1,
+                level:2
+            }
+        };
+        $("#table").bootstrapTable('refresh', opt);
+    }
+</script>
+<script th:inline = "javascript" type="text/javascript">
+    $('.yearpicker').datetimepicker({
+        startView: 'decade',
+        minView: 'decade',
+        format: 'yyyy',
+        maxViewMode: 2,
+        minViewMode:2,
+        autoclose: true
+    });
+
+    /*$('.selectpicker').selectpicker({
+        style: 'btn-info',
+        size: 4
+    });*/
+
+</script>
+</html>

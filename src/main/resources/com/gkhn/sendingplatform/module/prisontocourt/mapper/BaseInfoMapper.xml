@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.BaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    <id column="crim_id" jdbcType="VARCHAR" property="crimId" />
+    <id column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="penalty_change_type" jdbcType="INTEGER" property="penaltyChangeType" />
+    <result column="main_charge" jdbcType="INTEGER" property="mainCharge" />
+    <result column="charge_remark" jdbcType="VARCHAR" property="chargeRemark" />
+    <result column="parole_type" jdbcType="INTEGER" property="paroleType" />
+    <result column="case_num" jdbcType="VARCHAR" property="caseNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    crim_id, batch_id, penalty_change_type, main_charge, charge_remark, parole_type, 
+    case_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plc_caseinfo_baseinfo
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfoKey">
+    delete from plc_caseinfo_baseinfo
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo (crim_id, batch_id, penalty_change_type, 
+      main_charge, charge_remark, parole_type, 
+      case_num)
+    values (#{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{penaltyChangeType,jdbcType=INTEGER}, 
+      #{mainCharge,jdbcType=INTEGER}, #{chargeRemark,jdbcType=VARCHAR}, #{paroleType,jdbcType=INTEGER}, 
+      #{caseNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    insert into plc_caseinfo_baseinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="crimId != null">
+        crim_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="penaltyChangeType != null">
+        penalty_change_type,
+      </if>
+      <if test="mainCharge != null">
+        main_charge,
+      </if>
+      <if test="chargeRemark != null">
+        charge_remark,
+      </if>
+      <if test="paroleType != null">
+        parole_type,
+      </if>
+      <if test="caseNum != null">
+        case_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="crimId != null">
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="penaltyChangeType != null">
+        #{penaltyChangeType,jdbcType=INTEGER},
+      </if>
+      <if test="mainCharge != null">
+        #{mainCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chargeRemark != null">
+        #{chargeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="paroleType != null">
+        #{paroleType,jdbcType=INTEGER},
+      </if>
+      <if test="caseNum != null">
+        #{caseNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    update plc_caseinfo_baseinfo
+    <set>
+      <if test="penaltyChangeType != null">
+        penalty_change_type = #{penaltyChangeType,jdbcType=INTEGER},
+      </if>
+      <if test="mainCharge != null">
+        main_charge = #{mainCharge,jdbcType=INTEGER},
+      </if>
+      <if test="chargeRemark != null">
+        charge_remark = #{chargeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="paroleType != null">
+        parole_type = #{paroleType,jdbcType=INTEGER},
+      </if>
+      <if test="caseNum != null">
+        case_num = #{caseNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.BaseInfo">
+    update plc_caseinfo_baseinfo
+    set penalty_change_type = #{penaltyChangeType,jdbcType=INTEGER},
+      main_charge = #{mainCharge,jdbcType=INTEGER},
+      charge_remark = #{chargeRemark,jdbcType=VARCHAR},
+      parole_type = #{paroleType,jdbcType=INTEGER},
+      case_num = #{caseNum,jdbcType=VARCHAR}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+</mapper>

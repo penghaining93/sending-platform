@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.OldSickMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.OldSick" >
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <result column="old_sick_type" property="oldSickType" jdbcType="VARCHAR" />
+    <result column="ident_date" property="identDate" jdbcType="VARCHAR" />
+    <result column="revocation_date" property="revocationDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    crim_id, batch_id, old_sick_type, ident_date, revocation_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSickKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_old_sick
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSickKey" >
+    delete from plc_old_sick
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSick" >
+    insert into plc_old_sick (crim_id, batch_id, old_sick_type, 
+      ident_date, revocation_date)
+    values (#{crimId,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, #{oldSickType,jdbcType=VARCHAR}, 
+      #{identDate,jdbcType=VARCHAR}, #{revocationDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSick" >
+    insert into plc_old_sick
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="oldSickType != null" >
+        old_sick_type,
+      </if>
+      <if test="identDate != null" >
+        ident_date,
+      </if>
+      <if test="revocationDate != null" >
+        revocation_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="oldSickType != null" >
+        #{oldSickType,jdbcType=VARCHAR},
+      </if>
+      <if test="identDate != null" >
+        #{identDate,jdbcType=VARCHAR},
+      </if>
+      <if test="revocationDate != null" >
+        #{revocationDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSick" >
+    update plc_old_sick
+    <set >
+      <if test="oldSickType != null" >
+        old_sick_type = #{oldSickType,jdbcType=VARCHAR},
+      </if>
+      <if test="identDate != null" >
+        ident_date = #{identDate,jdbcType=VARCHAR},
+      </if>
+      <if test="revocationDate != null" >
+        revocation_date = #{revocationDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.OldSick" >
+    update plc_old_sick
+    set old_sick_type = #{oldSickType,jdbcType=VARCHAR},
+      ident_date = #{identDate,jdbcType=VARCHAR},
+      revocation_date = #{revocationDate,jdbcType=VARCHAR}
+    where crim_id = #{crimId,jdbcType=VARCHAR}
+      and batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+</mapper>

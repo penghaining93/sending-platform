@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.RecordInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfo" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="criminal_charge" property="criminalCharge" jdbcType="VARCHAR" />
+    <result column="exe_organ" property="exeOrgan" jdbcType="VARCHAR" />
+    <result column="orig_sentence_year" property="origSentenceYear" jdbcType="VARCHAR" />
+    <result column="orig_sentence_month" property="origSentenceMonth" jdbcType="VARCHAR" />
+    <result column="orig_sentence_day" property="origSentenceDay" jdbcType="VARCHAR" />
+    <result column="startime" property="startime" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, criminal_charge, exe_organ, orig_sentence_year, orig_sentence_month, 
+    orig_sentence_day, startime, endtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_record_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfoKey" >
+    delete from plc_record_info
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfo" >
+    insert into plc_record_info (batch_id, crim_id, criminal_charge, 
+      exe_organ, orig_sentence_year, orig_sentence_month, 
+      orig_sentence_day, startime, endtime
+      )
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{criminalCharge,jdbcType=VARCHAR}, 
+      #{exeOrgan,jdbcType=VARCHAR}, #{origSentenceYear,jdbcType=VARCHAR}, #{origSentenceMonth,jdbcType=VARCHAR}, 
+      #{origSentenceDay,jdbcType=VARCHAR}, #{startime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfo" >
+    insert into plc_record_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="criminalCharge != null" >
+        criminal_charge,
+      </if>
+      <if test="exeOrgan != null" >
+        exe_organ,
+      </if>
+      <if test="origSentenceYear != null" >
+        orig_sentence_year,
+      </if>
+      <if test="origSentenceMonth != null" >
+        orig_sentence_month,
+      </if>
+      <if test="origSentenceDay != null" >
+        orig_sentence_day,
+      </if>
+      <if test="startime != null" >
+        startime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="criminalCharge != null" >
+        #{criminalCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="exeOrgan != null" >
+        #{exeOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceYear != null" >
+        #{origSentenceYear,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceMonth != null" >
+        #{origSentenceMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceDay != null" >
+        #{origSentenceDay,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfo" >
+    update plc_record_info
+    <set >
+      <if test="criminalCharge != null" >
+        criminal_charge = #{criminalCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="exeOrgan != null" >
+        exe_organ = #{exeOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceYear != null" >
+        orig_sentence_year = #{origSentenceYear,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceMonth != null" >
+        orig_sentence_month = #{origSentenceMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="origSentenceDay != null" >
+        orig_sentence_day = #{origSentenceDay,jdbcType=VARCHAR},
+      </if>
+      <if test="startime != null" >
+        startime = #{startime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.RecordInfo" >
+    update plc_record_info
+    set criminal_charge = #{criminalCharge,jdbcType=VARCHAR},
+      exe_organ = #{exeOrgan,jdbcType=VARCHAR},
+      orig_sentence_year = #{origSentenceYear,jdbcType=VARCHAR},
+      orig_sentence_month = #{origSentenceMonth,jdbcType=VARCHAR},
+      orig_sentence_day = #{origSentenceDay,jdbcType=VARCHAR},
+      startime = #{startime,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

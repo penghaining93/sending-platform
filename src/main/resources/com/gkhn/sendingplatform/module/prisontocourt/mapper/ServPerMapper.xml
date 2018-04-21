@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkhn.sendingplatform.module.prisontocourt.mapper.ServPerMapper" >
+  <resultMap id="BaseResultMap" type="com.gkhn.sendingplatform.module.prisontocourt.model.ServPer" >
+    <id column="batch_id" property="batchId" jdbcType="VARCHAR" />
+    <id column="crim_id" property="crimId" jdbcType="VARCHAR" />
+    <result column="law_score" property="lawScore" jdbcType="VARCHAR" />
+    <result column="award_situation" property="awardSituation" jdbcType="VARCHAR" />
+    <result column="punish_situation" property="punishSituation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    batch_id, crim_id, law_score, award_situation, punish_situation
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPerKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plc_serv_per
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPerKey" >
+    delete from plc_serv_per
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPer" >
+    insert into plc_serv_per (batch_id, crim_id, law_score, 
+      award_situation, punish_situation)
+    values (#{batchId,jdbcType=VARCHAR}, #{crimId,jdbcType=VARCHAR}, #{lawScore,jdbcType=VARCHAR}, 
+      #{awardSituation,jdbcType=VARCHAR}, #{punishSituation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPer" >
+    insert into plc_serv_per
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="crimId != null" >
+        crim_id,
+      </if>
+      <if test="lawScore != null" >
+        law_score,
+      </if>
+      <if test="awardSituation != null" >
+        award_situation,
+      </if>
+      <if test="punishSituation != null" >
+        punish_situation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchId != null" >
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="crimId != null" >
+        #{crimId,jdbcType=VARCHAR},
+      </if>
+      <if test="lawScore != null" >
+        #{lawScore,jdbcType=VARCHAR},
+      </if>
+      <if test="awardSituation != null" >
+        #{awardSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="punishSituation != null" >
+        #{punishSituation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPer" >
+    update plc_serv_per
+    <set >
+      <if test="lawScore != null" >
+        law_score = #{lawScore,jdbcType=VARCHAR},
+      </if>
+      <if test="awardSituation != null" >
+        award_situation = #{awardSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="punishSituation != null" >
+        punish_situation = #{punishSituation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gkhn.sendingplatform.module.prisontocourt.model.ServPer" >
+    update plc_serv_per
+    set law_score = #{lawScore,jdbcType=VARCHAR},
+      award_situation = #{awardSituation,jdbcType=VARCHAR},
+      punish_situation = #{punishSituation,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+      and crim_id = #{crimId,jdbcType=VARCHAR}
+  </update>
+</mapper>

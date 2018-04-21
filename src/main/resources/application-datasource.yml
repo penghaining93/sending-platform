@@ -1,0 +1,345 @@
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        master:   #平台主数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:mysql://127.0.0.1:3306/sending_platform?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&useSSL=true
+            driver-class-name: com.mysql.jdbc.Driver
+            username: root
+            password: 123456
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        deshan: #德山数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: cspmsys
+            password: cspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        changsha: #长沙数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.29.4:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: changshapmsys
+            password: changshapmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        yueyang: #岳阳数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.129.6:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        wuling: #武陵数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.208.2:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: wulingpmsys
+            password: wulingpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        yannan: #雁南数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.65.4:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: yannanpmsys
+            password: yannanpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        loudi: #娄底数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.106.124:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: ldpmsys
+            password: ldpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        chishan: #赤山数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.169.3:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: hnpmsys
+            password: hnpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        yanbei: #雁北数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.58.230:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: chishanpmsys
+            password: chishanpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        shaoyang: #邵阳数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.137.200:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        chaling: #茶陵数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.143.152.230:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        yongzhou: #永州数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.81.7:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: chishanpmsys
+            password: chishanpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        dongan: #东安数据库！！！！！！！！！！！！！！网络有问题，不通
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.89.250:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: cspmsys
+            password: cspmsys0
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        huaihua: #怀化数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.97.3:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        jishou: #吉首数据库！！！！！！！！！！！！！！！网络有问题，不通
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: cspmsys
+            password: cspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        jinshi: #津市数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.143.120.4:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        weiguansuo: #未管所数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.34.60:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: wgspmsys
+            password: wgspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        hengzhou: #衡州数据库  ！！！！！！！！！网络不通
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: cspmsys
+            password: cspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        guiyang: #贵阳数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.216.10:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        chenzhou: #郴州数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.161.5:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        pingtang: #平塘数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.143.192.249:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        wangling: #网龄数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.151.130:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: wlpmsys
+            password: wlpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        xingcheng: #星城数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.49.131:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: cspmsys
+            password: cspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        changkang: #长康数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.41.3:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: ckpmsys
+            password: ckpmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        xiangnan: #湘南数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.73.5:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: dspmsys
+            password: dspmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+        nvzi: #女子数据库
+            type: com.alibaba.druid.pool.DruidDataSource
+            url: jdbc:oracle:thin:@10.43.18.8:1521:orcl
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            username: nvzipmsys
+            password: nvzipmsys
+            initial-size: 5
+            min-idle: 1
+            max-active: 100
+            test-on-borrow: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
